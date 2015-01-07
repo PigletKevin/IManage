@@ -5,8 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.nio.ByteOrder;
 
 import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.event.*;
 
 /*
@@ -18,16 +20,16 @@ import javax.swing.event.*;
  */
 public class Login extends JFrame {
 
-	private JTextField textField1;// account
-	private JPasswordField passwordField;
-	private Box hbox1, hbox2, hbox3, hbox4;// to hold components
-	private ButtonGroup group;// to choose whether you are manager or worker
+	JTextField textField1;// account
+	JPasswordField passwordField;
+	Box hbox1, hbox2, hbox3, hbox4,hbox5;// to hold components,hbox5 is to hold lable3.
+	ButtonGroup group;// to choose whether you are manager or worker
 	JPanel jPanel;// to set boxes
-	JLabel label1, label2;
+	JLabel label1, label2,label3;//lable3 to welcome
 	JButton loginButton, cancelButton;
-
-	JRadioButton manageButton, workButton;
-
+	JRadioButton manageButton,workButton; 
+	
+	
 	public static final int DEFAULT_WIDTH = 300;
 	public static final int DEFAULT_HEIGHT = 300;
 
@@ -35,8 +37,9 @@ public class Login extends JFrame {
 		JFrame login = new Login();
 		login.setTitle("IManage LogIn");
 		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		login.setBounds(100, 100, 300, 300);
+		login.setBounds(100, 100, 250, 300);
 		// login.setSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+		login.setResizable(false);//not allowed to change the size of the frame.
 		login.setVisible(true);
 	}
 
@@ -48,6 +51,11 @@ public class Login extends JFrame {
 	 */
 
 	public Login() {
+		label3=new JLabel("             Welcome to IManage system!",JLabel.LEADING);
+		hbox5 = Box.createHorizontalBox();
+		hbox5.add(label3);		
+		hbox5.add(Box.createHorizontalGlue());
+		
 		// construct the top horizontal box
 		label1 = new JLabel("账号:");
 		textField1 = new JTextField(10);
@@ -98,7 +106,8 @@ public class Login extends JFrame {
 		// create a panel to put buttons and group buttons on
 		jPanel = new JPanel();
 		jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
-		jPanel.add(hbox1, BorderLayout.NORTH);
+		jPanel.add(hbox5, BorderLayout.NORTH);
+		jPanel.add(hbox1, BorderLayout.CENTER);
 		jPanel.add(hbox2, BorderLayout.CENTER);
 		jPanel.add(hbox4, BorderLayout.CENTER);
 		hbox3.add(Box.createGlue());
@@ -107,10 +116,6 @@ public class Login extends JFrame {
 		setContentPane(jPanel);
 
 		this.setVisible(true);
-
-		// create the listeners
-		// ActionListener loginLis=new LoginListener();
-		// ActionListener cancelLis=new Terminator();
 
 		// connect listeners to buttons
 		// log in to open the other frame for later use by managers or workers
