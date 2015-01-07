@@ -22,7 +22,8 @@ import org.omg.CORBA.PUBLIC_MEMBER;
  */
 public class MoneyCheck extends JFrame {
 	JLabel outLine, cash, total, profit, Rate;
-	JTextField cashShow, totalShow, profitShow, RateShow;
+	//JTextField cashShow, totalShow, profitShow, RateShow;
+	JLabel cashShow, totalShow, profitShow, RateShow;
 	Box box1, box2, box3, box4;
 	JPanel panel;
 
@@ -51,7 +52,7 @@ public class MoneyCheck extends JFrame {
 		this.setTitle("MoneyCheck");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(300, 300, 350, 175);// the size is strictly set
-
+		this.setResizable(false);//not allowed to change the size of the frame.
 		/*
 		 * currentCost=getCost(); totalProfit=UnitInt-currentCost;
 		 * profitRate=totalProfit/currentCost;
@@ -64,10 +65,10 @@ public class MoneyCheck extends JFrame {
 		profit = new JLabel("总利润：");
 		Rate = new JLabel("利润率：");
 		// define the textFields ,the four of which should be initialized.
-		cashShow = new JTextField();
-		totalShow = new JTextField();
-		profitShow = new JTextField();
-		RateShow = new JTextField();
+		cashShow = new JLabel();
+		totalShow = new JLabel();
+		profitShow = new JLabel();
+		RateShow = new JLabel();
 
 		// set the cash to the box
 		box1 = Box.createHorizontalBox();
