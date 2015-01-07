@@ -1,14 +1,11 @@
 package iManage;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 
 /*
  * 管理员菜单界面：
@@ -39,17 +36,38 @@ public class MainFrameManager extends JFrame implements ActionListener {
 		Menu.add(anItem);
 	}
 
+	JLabel label1,label2,label3,label4;//to show the basic information in the blank below the menu.
+	String workNum;//to get the work number from the Log-in class.
+	JPanel panel=new JPanel();//to contain the menu and the label.
+	Font font=new Font("Dialog", 0, 16);
+	Font font2=new Font("Dialog", 1, 16);
 	public MainFrameManager() {
-		this.setTitle("IManagement for Workers");
+		this.setTitle("IManagement for Managers");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setBounds(100, 100, 300, 300);
+		this.setBounds(100, 100, 300, 200);
 		this.setLocationByPlatform(true);
-
+		this.setResizable(false);//not allowed to change the size of the frame.
+		
+		//new a class and get the account .
+		Login login=new Login();//????????
+		login.setVisible(false);//not to show it.
+		
+		workNum=login.textField1.getText();
+		label1=new JLabel("Dear "+workNum  +" : ");
+		label2=new JLabel("               welcome back to the ");
+		label3=new JLabel( "                         IMANAGE  ");
+		label4=new JLabel("                    Enjoy managing !");
+		
+		label1.setFont(font);
+		label2.setFont(font);
+		label3.setFont(font2);
+		label4.setFont(font);
+		
 		// place the menu bar to the frame
 		// this.setContentPane(new MenuWindow());
 		JMenu menu1 = new JMenu("商品管理");
 		addItem(menu1, "库存查询", this);
-		addItemButDisabled(menu1, "入库", this);
+		addItem(menu1, "入库", this);
 
 		JMenu menu2 = new JMenu("资金管理");
 		addItem(menu2, "资金查询", this);
@@ -69,6 +87,13 @@ public class MainFrameManager extends JFrame implements ActionListener {
 		menubar.add(menu2);
 		menubar.add(menu3);
 		this.setJMenuBar(menubar);
+		
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.add(label1,BorderLayout.NORTH);
+		panel.add(label2,BorderLayout.CENTER);
+		panel.add(label3,BorderLayout.CENTER);
+		panel.add(label4,BorderLayout.SOUTH);
+		this.setContentPane(panel);
 		this.setVisible(true);
 
 	}
