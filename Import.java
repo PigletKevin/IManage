@@ -8,7 +8,8 @@ import javax.swing.*;
 
 /*
  * 入库界面：
- * 需要继续完成的功能：两个按钮的监听器的设置，通过设置“增加”监听器使得在成功下单后按照选定的类型和数量更新库存中的内容，
+ * 需要继续完成的功能：两个按钮的监听器的设置，
+ * 通过设置“增加”监听器使得在成功下单后按照选定的类型和数量更新库存中的内容，
  */
 public class Import extends JFrame // implements ActionListener
 {
@@ -16,7 +17,7 @@ public class Import extends JFrame // implements ActionListener
 	JButton increment, cancel;
 	JComboBox<String> typeBox;
 	Box hbox1, hbox2, hbox3;
-	JTextField numTextField = new JTextField(10);
+	JTextField numTextField = new JTextField(16);
 
 	public static void main(String[] args) {
 		new Import().setVisible(true);
@@ -29,7 +30,8 @@ public class Import extends JFrame // implements ActionListener
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 300, 200);
 		this.setLocationByPlatform(true);
-
+		this.setResizable(false);//not allowed to change the size of the frame.
+		
 		typeBox = new JComboBox<>();
 		// add the types.
 		typeBox.addItem("ipad air——3100 RMB");
