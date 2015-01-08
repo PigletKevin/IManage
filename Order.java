@@ -23,10 +23,10 @@ import javax.swing.JTextField;
 public class Order extends JFrame 
 {
 	//similar to the Calculate.java
-	JLabel type,num,unitPrice,workNumber,clientName,clientAdd,clientPhone;
-	JTextField Num,UnitPrice,work,name,address,phone;
+	JLabel type,num,unitPrice,workNumber,clientName,clientAdd,clientPhone,importPrice;
+	JTextField Num,UnitPrice,work,name,address,phone,Import;
 	JButton order,cancel;
-	Box box1,box2,box3,box4,box5,box6,box7,box8;
+	Box box1,box2,box3,box4,box5,box6,box7,box8,box9;
 	JComboBox<String> typeBox;
 	
 	public static void main(String[] args)
@@ -44,6 +44,7 @@ public class Order extends JFrame
 		type=new JLabel("类型:");
 		num=new JLabel("数量:");
 		unitPrice=new JLabel("售价:");
+		importPrice=new JLabel("进价:");
 		workNumber=new JLabel("工号:");
 		clientName=new JLabel("客户姓名:");
 		clientAdd=new JLabel("客户地址:");
@@ -51,11 +52,11 @@ public class Order extends JFrame
 		
 		typeBox = new JComboBox<>();
 		//add the types.
-		typeBox.addItem("ipad air——3100 RMB");
-		typeBox.addItem("ipad mini2——2500 RMB");
-		typeBox.addItem("iphone5c——2900 RMB");
-		typeBox.addItem("iphone5——3500 RMB");
-		typeBox.addItem("iphone5s——4300 RMB");
+		typeBox.addItem("Ipad MINI2          ");
+		typeBox.addItem("Ipad Air          ");
+		typeBox.addItem("Iphone 5C          ");
+		typeBox.addItem("Iphone 5          ");
+		typeBox.addItem("Iphone 5S          ");
 		typeBox.setEditable(false);
 		typeBox.setMaximumSize(typeBox.getPreferredSize());//?
 		
@@ -64,6 +65,7 @@ public class Order extends JFrame
 		Num=new JTextField();
 		UnitPrice=new JTextField();
 		work=new JTextField();
+		Import=new JTextField();
 		name=new JTextField();
 		address=new JTextField();
 		phone=new JTextField();
@@ -91,6 +93,12 @@ public class Order extends JFrame
 		box4.add(workNumber);
 		box4.add(Box.createHorizontalStrut(30));
 		box4.add(work);
+		
+		//add the column of the import price.
+		box9 = Box.createHorizontalBox();
+		box9.add(importPrice);
+		box9.add(Box.createHorizontalStrut(30));
+		box9.add(Import);
 		
 		box5 = Box.createHorizontalBox();
 		box5.add(clientName);
@@ -121,6 +129,7 @@ public class Order extends JFrame
 		panel.add(box2);
 		panel.add(box3);
 		panel.add(box4);
+		panel.add(box9);
 		panel.add(box5);
 		panel.add(box6);
 		panel.add(box7);
