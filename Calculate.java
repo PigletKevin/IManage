@@ -11,10 +11,10 @@ import javax.swing.*;
  * 需要完成的功能：监听器的实现，以及其中数据之间的计算，和弹出结果的窗体；
  */
 public class Calculate extends JFrame {
-	JLabel type, num, unitPrice;
-	JTextField Num, UnitPrice;
+	JLabel type, num, unitPrice,Import;
+	JTextField Num, UnitPrice,importPrice;
 	JButton order, cancel;
-	Box box1, box2, box3, box4;
+	Box box1, box2, box3, box4,box9;//box9是新加的进价一栏
 	JComboBox<String> typeBox;
 
 	//the part to show the outcome 
@@ -45,9 +45,11 @@ public class Calculate extends JFrame {
 		type = new JLabel("类型:");
 		num = new JLabel("数量:");
 		unitPrice = new JLabel("售价:");
+		Import=new JLabel("进价:");
 
-		Num = new JTextField();
-		UnitPrice = new JTextField();
+		Num = new JTextField(10);
+		UnitPrice = new JTextField(10);
+		importPrice=new JTextField(10);
 
 		order = new JButton("计算");
 		cancel = new JButton("取消");
@@ -62,6 +64,12 @@ public class Calculate extends JFrame {
 		box2.add(Box.createHorizontalStrut(10));
 		box2.add(Num);
 
+		//to add the column of the import price.
+		box9 = Box.createHorizontalBox();
+		box9.add(Import);
+		box9.add(Box.createHorizontalStrut(10));
+		box9.add(importPrice);
+		
 		box3 = Box.createHorizontalBox();
 		box3.add(unitPrice);
 		box3.add(Box.createHorizontalStrut(10));
@@ -74,11 +82,11 @@ public class Calculate extends JFrame {
 		box4.add(cancel);
 		box4.add(Box.createHorizontalGlue());
 		
-		toShow=new JLabel("計算結果如下：");
-		showSell=new JLabel("總售價：");
-		showProfit=new JLabel("利潤：");
-		showAlert=new JLabel("是否超過警戒綫：");
-		//下面三個需要動態設置
+		toShow=new JLabel("计算结果如下:");
+		showSell=new JLabel("总售价:");
+		showProfit=new JLabel("利润:");
+		showAlert=new JLabel("是否超过警戒线:");
+		//下面三个内容需要动态设置；
 		sell=new JLabel();
 		profit=new JLabel();
 		Alert=new JLabel();
@@ -107,11 +115,13 @@ public class Calculate extends JFrame {
 		box8 = Box.createHorizontalBox();
 		box8.add(toShow);
 		box8.add(Box.createHorizontalGlue());
+		
 		// arrange boxes and put them into a panel
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.add(box1);
 		panel.add(box2);
+		panel.add(box9);
 		panel.add(box3);
 		panel.add(box4);
 		panel.add(box8);
